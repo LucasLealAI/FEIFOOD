@@ -1,21 +1,37 @@
 print('Seja bem-vindo ao FEIFOOD!')
-escolha = input('Se for um novo usuário, digite C para se cadastrar. Caso já tenha logado, digite L para se logar: ')
+menuprincipal = input('Se for um novo usuário, digite C para se cadastrar. Caso já tenha logado, digite L para se logar: ')
+
+# Dicionário para usuários lá, se tiver algo ai é só teste, tira sa merda depois
 
 usuarios = {
       "Tania", 123,
       "Lucas", 321
 }
 
+# Dicionario pros pedido dos cara, mesma coisa que o cara ali em cima disse
+
+pedidos = {}
+
+# Menu de yummers
+
 def menu():
-      print("Selecione a comida que deseja:")
+      print("Selecione a comida que deseja:\n")
       comidas = {
             "Hamburguer": "R$30,00",
             "Hot Dog": "R$25,00",
-            "Coxinha": "R$20,00"
+            "Coxinha": "R$20,00",
+            "Coca-Cola": "R$15,00"
       }
       print(comidas)
+      escolha = print(input('\n'))
+      if escolha in comidas:
+            print("Hamburguer adicionado")
+      else:
+            print("Pedido inválido")
 
-if escolha == "C":
+# Cadastro
+
+if menuprincipal == "C":
         nome = input('Digite seu nome de usuário: ')
         senha = input('Digite uma senha: ')
         if nome in usuarios:
@@ -25,8 +41,10 @@ if escolha == "C":
         else:
             print("Cadastro feito com sucesso, aproveite sua primeira vez!")
             menu()
-              
-elif escolha == "L":
+
+# Login
+
+elif menuprincipal == "L":
         nome = input('Digite seu nome de usuário: ')
         senha = input('Digite uma senha: ')
         if nome in usuarios:
