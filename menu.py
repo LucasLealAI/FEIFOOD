@@ -1,8 +1,3 @@
-print('Seja bem-vindo ao FEIFOOD!')
-menuprincipal = input('Se for um novo usuário, digite C para se cadastrar. Caso já tenha logado, digite L para se logar: ')
-
-# Dicionário para usuários lá, se tiver algo ai é só teste, tira sa merda depois
-
 usuarios = {
       "Tania", 123,
       "Lucas", 321
@@ -10,50 +5,62 @@ usuarios = {
 
 # Dicionario pros pedido dos cara, mesma coisa que o cara ali em cima disse
 
-pedidos = {}
+pedidos = []
 
-# Menu de yummers
+def inicio ():
+      print('\nSeja bem-vindo ao FEIFOOD!\n')
+      menuprincipal = input('Se for um novo usuário, digite C para se cadastrar. Caso já tenha logado, digite L para logar:\n')
+      # Cadastro
+
+      if menuprincipal == "C":
+            nome = input('\nDigite seu nome de usuário: ')
+            senha = input('\nDigite uma senha: ')
+            if nome and senha in usuarios:
+                  print("\nUsuário já presente, por favor, faça o login ao invés.")
+                  inicio()
+            else:
+                  print("\nCadastro feito com sucesso, aproveite sua primeira vez!")
+                  menu()
+
+      # Login
+
+      elif menuprincipal == "L":
+            nome = input('\nDigite seu nome de usuário: ')
+            senha = input('\nDigite uma senha: ')
+            if nome and senha in usuarios:
+                  print("\nLogin completo, aproveite!\n")
+                  menu()
+            else:
+                  print("\nUsuário não encontrado, caso não há uma conta, cadastre-se!")
+                  inicio()
+      else:
+            print("\nOpção inválida.")
+            inicio()
+
+      # Menu de yummers
 
 def menu():
-      print("Selecione a comida que deseja:\n")
-      comidas = {
-            "Hamburguer": "R$30,00",
-            "Hot Dog": "R$25,00",
-            "Coxinha": "R$20,00",
-            "Coca-Cola": "R$15,00"
-      }
+      print("\nSelecione a comida que deseja: \n")
+      comidas = []
+
       print(comidas)
-      escolha = print(input('\n'))
-      if escolha in comidas:
-            print("Hamburguer adicionado")
+      escolha = input('\n')
+      if escolha not in comidas:
+            print("\nComida adicionada adicionada!")
+            pedidos.append(pedidos)
+            escolha2 = input("\nDeseja adicionar mais alguma comida? (S/N): \n")
+            if escolha2 == "N":
+                  avaliar()
+            elif escolha2 == "S":
+                  menu()
       else:
-            print("Pedido inválido")
+            print("\nPedido inválido ou já adicionado na lista")
 
-# Cadastro
+def avaliar():
+      print("\n5 estrelas RIGHT NOW!!!!!")
 
-if menuprincipal == "C":
-        nome = input('Digite seu nome de usuário: ')
-        senha = input('Digite uma senha: ')
-        if nome in usuarios:
-              print("Usuário já presente, por favor, faça o login ao invés.")
-        elif senha in usuarios:
-              print("Usuário já presente, por favor, faça o login ao invés.")
-        else:
-            print("Cadastro feito com sucesso, aproveite sua primeira vez!")
-            menu()
+inicio()
 
-# Login
+# Dicionário para usuários lá, se tiver algo ai é só teste, tira sa merda depois
 
-elif menuprincipal == "L":
-        nome = input('Digite seu nome de usuário: ')
-        senha = input('Digite uma senha: ')
-        if nome in usuarios:
-            print("Login completo, aproveite!")
-            menu()
-        elif senha in usuarios:
-              print("Login completo, aproveite!")
-              menu()
-        else:
-              print("Usuário não encontrado, caso não há uma conta, cadastre-se!")
-else:
-      print("Opção inválida.")
+# Avaliar pedido
